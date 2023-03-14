@@ -21,7 +21,7 @@ function InputTodo() {
     }
   }
   return (
-    <div className="w-full flex flex-col justify-around items-center  h-32">
+    <div className="w-full flex flex-col justify-around items-center  h-[20vh]">
       <h1 className="text-3xl font-bold">Full Stack Todo List</h1>
       <form className="flex gap-5" onSubmit={formSubmit}>
         <input

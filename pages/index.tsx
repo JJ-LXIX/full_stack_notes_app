@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import InputTodo from "../Components/InputTodo";
+import ListTodo from "../Components/ListTodo";
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
 
       <main className="min-h-screen bg-zinc-900 text-zinc-50">
         <InputTodo />
+        <ListTodo />
       </main>
     </div>
   );

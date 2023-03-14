@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import pool from "../../db/db";
+import pool from "../../../db/db";
 
 type Data = {
   name: string;
@@ -17,6 +17,15 @@ export default async function handler(
         [description]
       );
       res.json(newTodo.rows[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  if (req.method === "GET") {
+    try {
+      const allTodos = await pool.query("SELECT * FROM todo");
+      res.json(allTodos.rows);
     } catch (err) {
       console.log(err);
     }

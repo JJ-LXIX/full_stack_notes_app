@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/api/todos/[id].js",
-    "pages/api/todos/[id].js"
+    "pages/api/todos/[id].js",
+    "Components/ListTodo.tsx"
   ],
   "exclude": ["node_modules"]
 }

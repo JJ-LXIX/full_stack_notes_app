@@ -36,21 +36,29 @@ function EditTodo({ todo }: any) {
       </button>
 
       {openModal ? (
-        <div
-          className="fixed inset-0 bg-zinc-800/90 transition-none duration-300"
-          onClick={() => setOpenModal(false)}
-        >
-          <button
-            className="absolute right-[3rem] top-[10rem] text-4xl"
+        <>
+          <div
+            className="fixed inset-0 bg-zinc-800/90 transition-none duration-300"
+            onClick={() => setOpenModal(false)}
+          >
+            <button
+              className="absolute right-[3rem] top-[10rem] text-4xl"
+              onClick={(e) => {
+                e.stopPropagation;
+                setOpenModal(false);
+                setDescription(todo.description);
+              }}
+            >
+              X
+            </button>
+          </div>
+          <div
+            className="z-10 p-5 bg-zinc-600 h-[20vh] w-[70vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center items-center"
             onClick={(e) => {
               e.stopPropagation;
-              setOpenModal(false);
-              setDescription(todo.description);
+              setOpenModal(true);
             }}
           >
-            X
-          </button>
-          <div className="p-5 bg-zinc-600 h-[20vh] w-[70vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center items-center">
             <input
               type="text"
               className="w-full h-[3rem] bg-zinc-700 p-2"
@@ -59,7 +67,7 @@ function EditTodo({ todo }: any) {
             />
             <button onClick={(e) => updateDescription(e)}>Edit</button>
           </div>
-        </div>
+        </>
       ) : null}
     </>
   );

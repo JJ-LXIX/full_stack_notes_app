@@ -1,5 +1,6 @@
 "use client ";
 import { useEffect, useState } from "react";
+import EditTodo from "./EditTodo";
 
 function ListTodo() {
   type DATA = [
@@ -58,7 +59,9 @@ function ListTodo() {
             return (
               <tr key={todo.todo_id}>
                 <td className=" p-2 ">{todo.description}</td>
-                <td className=" p-2 text-center">EDIT</td>
+                <td className=" p-2 text-center">
+                  <EditTodo todo={todo} />
+                </td>
                 <td className=" p-2 text-center">
                   <button onClick={() => deleteTodos(todo.todo_id)}>
                     DELETE

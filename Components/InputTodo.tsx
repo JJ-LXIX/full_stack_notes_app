@@ -1,9 +1,7 @@
-import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
 function InputTodo() {
   const [description, setDescription] = useState("");
-  const router = useRouter();
 
   async function formSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -15,7 +13,7 @@ function InputTodo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      router.push("/");
+      (window as Window).location = "/";
     } catch (err) {
       console.log(err);
     }

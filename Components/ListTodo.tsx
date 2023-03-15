@@ -44,8 +44,8 @@ function ListTodo() {
   }, []);
 
   return (
-    <div className="w-full  h-[75vh]">
-      <table className="w-full border border-seperate">
+    <div className="w-full  h-[75vh] flex flex-col justify-start items-center mt-10">
+      {/* <table className="w-full border border-seperate">
         <thead>
           <tr>
             <th>DESCRIPTION</th>
@@ -71,9 +71,30 @@ function ListTodo() {
             );
           })}
         </tbody>
-      </table>
-      <div></div>
-      {/* <p>{todos[0].description}</p> */}
+      </table> */}
+
+      {todos?.map((todo: loopTodo) => {
+        console.log(todo);
+        return (
+          <div
+            key={todo.todo_id}
+            className="h-44 w-10/12 bg-white/90 rounded-lg mb-5 flex justify-between "
+          >
+            <h2 className="text-2xl font-semibold text-zinc-900 pl-4 pt-10 ">
+              {todo.description.toUpperCase()}
+            </h2>
+            <div className="flex flex-col justify-between items-center px-2 py-5">
+              <EditTodo todo={todo} />
+              <button
+                onClick={() => deleteTodos(todo.todo_id)}
+                className="max-w-sm focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                DELETE
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

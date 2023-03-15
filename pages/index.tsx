@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import InputTodo from "../Components/InputTodo";
 import ListTodo from "../Components/ListTodo";
 
@@ -12,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-zinc-900 text-zinc-50">
+      <main className="min-h-screen bg-zinc-900 text-zinc-50 pb-10">
         <InputTodo />
         <ListTodo />
       </main>

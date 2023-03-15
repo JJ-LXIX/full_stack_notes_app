@@ -29,7 +29,6 @@ function ListTodo() {
       console.log(error);
     }
     if (data) {
-      console.log(data);
       setTodos(data as any);
     }
   }
@@ -59,7 +58,6 @@ function ListTodo() {
 
   useEffect(() => {
     getTodos();
-    // console.log(todos);
   }, []);
 
   return (

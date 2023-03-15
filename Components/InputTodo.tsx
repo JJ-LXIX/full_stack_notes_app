@@ -25,9 +25,6 @@ function InputTodo() {
     if (error) {
       console.log(error);
     }
-    if (data) {
-      console.log(data);
-    }
   }
 
   // async function formSubmit(e: FormEvent<HTMLFormElement>) {

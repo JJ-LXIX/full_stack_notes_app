@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FaPen } from "react-icons/fa";
 
 function EditTodo({ todo }: any) {
   const [openModal, setOpenModal] = useState<Boolean>(false);
@@ -18,7 +19,7 @@ function EditTodo({ todo }: any) {
           body: JSON.stringify(body),
         }
       );
-      (window as Window).location = "/";
+      router.reload();
     } catch (err) {
       console.log(err);
     }
@@ -27,13 +28,13 @@ function EditTodo({ todo }: any) {
   return (
     <>
       <button
-        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        className="focus:outline-none text-white bg-green-800 hover:bg-green-700 shadow-neon hover:scale-105 active:scale-75 transition-all duration-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-3 mr-2 mb-2 "
         onClick={() => {
           setOpenModal(true);
           setDescription(todo.description);
         }}
       >
-        EDIT
+        <FaPen />
       </button>
 
       {openModal ? (

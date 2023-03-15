@@ -1,7 +1,9 @@
+import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
 function InputTodo() {
   const [description, setDescription] = useState("");
+  const router = useRouter();
 
   async function formSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -13,15 +15,16 @@ function InputTodo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      (window as Window).location = "/";
+      // (window as Window).location = "/";
+      router.reload();
     } catch (err) {
       console.log(err);
     }
   }
   return (
-    <div className="w-full flex flex-col justify-around items-center  h-[20vh]">
+    <div className="w-full flex flex-col justify-around items-center  h-[20vh] ">
       <h1 className="text-3xl font-bold">Full Stack Todo List</h1>
-      <form className="flex gap-5" onSubmit={formSubmit}>
+      <form className="flex gap-5 " onSubmit={formSubmit}>
         <input
           type="text"
           className="bg-zinc-600 px-4 rounded-sm font-semibold"

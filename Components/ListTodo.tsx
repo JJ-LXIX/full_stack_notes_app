@@ -50,13 +50,11 @@ function ListTodo() {
       .from("todo")
       .delete()
       .eq("todo_id", `${id}`);
+    const newData: any = todos?.filter((todo): any => todo.todo_id !== id);
+    setTodos(newData);
 
     if (error) {
       console.log(error);
-    }
-    if (data) {
-      const newData: any = todos?.filter((todo): any => todo.todo_id !== id);
-      setTodos(newData);
     }
   }
 

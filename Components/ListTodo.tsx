@@ -36,14 +36,27 @@ function ListTodo() {
 
   // Delete todos
   async function deleteTodos(id: string) {
-    try {
-      const deleteTodo = await fetch(`http://localhost:3000/api/todos/${id}`, {
-        method: "DELETE",
-      });
+    // try {
+    //   const deleteTodo = await fetch(`http://localhost:3000/api/todos/${id}`, {
+    //     method: "DELETE",
+    //   });
+    //   const newData: any = todos?.filter((todo): any => todo.todo_id !== id);
+    //   setTodos(newData);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+
+    const { data, error } = await supabase
+      .from("todo")
+      .delete()
+      .eq("todo_id", `${id}`);
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
       const newData: any = todos?.filter((todo): any => todo.todo_id !== id);
       setTodos(newData);
-    } catch (err) {
-      console.log(err);
     }
   }
 

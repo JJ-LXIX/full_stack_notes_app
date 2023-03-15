@@ -1,6 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
+import { createClient } from "@supabase/supabase-js";
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
+);
 
 function EditTodo({ todo }: any) {
   const [openModal, setOpenModal] = useState<Boolean>(false);
@@ -9,20 +16,11 @@ function EditTodo({ todo }: any) {
 
   async function updateDescription(e: any) {
     e.preventDefault();
-    try {
-      const body = { description };
-      const response = await fetch(
-        `http://localhost:3000/api/todos/${todo.todo_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
-      router.reload();
-    } catch (err) {
-      console.log(err);
-    }
+    await supabase
+      .from("todo")
+      .update({ description: `${description}` })
+      .eq("todo_id", `${todo.todo_id}`);
+    router.reload();
   }
 
   return (

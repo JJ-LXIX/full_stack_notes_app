@@ -1,24 +1,32 @@
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
+);
 
 function InputTodo() {
   const [description, setDescription] = useState("");
   const router = useRouter();
 
+  // Add todo
   async function formSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (description === "") return;
-    try {
-      const body = { description };
-      const response = await fetch("http://localhost:3000/api/todos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      // (window as Window).location = "/";
-      router.reload();
-    } catch (err) {
-      console.log(err);
+
+    const { data, error } = await supabase
+      .from("todo")
+      .insert([{ description: `${description}` }]);
+    router.reload();
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      console.log(data);
     }
   }
   return (

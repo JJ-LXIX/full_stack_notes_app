@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
 import { FaTrash } from "react-icons/fa";
+import { createClient } from "@supabase/supabase-js";
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
+);
 
 function ListTodo() {
   type DATA = [
@@ -16,12 +23,14 @@ function ListTodo() {
 
   // Fetch all todos
   async function getTodos() {
-    try {
-      const response = await fetch("http://localhost:3000/api/todos");
-      const data = await response.json();
-      setTodos(data);
-    } catch (err) {
-      console.log(err);
+    let { data, error } = await supabase.from("todo").select("*");
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      console.log(data);
+      setTodos(data as any);
     }
   }
 

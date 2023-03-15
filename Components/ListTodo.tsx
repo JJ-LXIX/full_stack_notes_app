@@ -33,6 +33,15 @@ function ListTodo() {
       setTodos(data as any);
     }
   }
+  // async function getTodos() {
+  //   try {
+  //     const response = await fetch("http://localhost:3000/api/todos");
+  //     const data = await response.json();
+  //     setTodos(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   // Delete todos
   async function deleteTodos(id: string) {
@@ -54,22 +63,27 @@ function ListTodo() {
   }, []);
 
   return (
-    <div className="w-full  min-h-[75vh] flex flex-col justify-start items-center mt-10">
+    <div
+      className="w-full  min-h-[75vh] flex flex-col  justify-start items-center mt-10 
+    lg:grid lg:grid-cols-2 lg:justify-items-center lg:gap-y-8 
+    xl:grid-cols-4 xl:w-[75%]  xl:mx-auto place-content-start"
+    >
       {todos?.map((todo: loopTodo) => {
         return (
           <div
             key={todo.todo_id}
-            className="h-44 w-[85%] bg-purple-800 shadow-neon rounded-lg mb-5 flex  justify-between "
+            className="h-44 w-[85%] bg-purple-800 border-2 border-purple-400 shadow-lg  shadow-purple-400 rounded-lg mb-10 lg:mb-6 
+            flex justify-between lg:w-[90%] xl:w-[85%] xl:h-72 xl:flex-col p-2"
           >
-            <h2 className="text-2xl font-semibold text-white pl-4 pt-4 ">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-white px-2 pt-4 ">
               {todo.description.slice(0, 1).toUpperCase() +
                 todo.description.slice(1)}
             </h2>
-            <div className="flex flex-col justify-between items-end px-2 py-5">
+            <div className="flex  justify-around items-end xl:items-start xl:justify-end ">
               <EditTodo todo={todo} />
               <button
                 onClick={() => deleteTodos(todo.todo_id)}
-                className="max-w-sm focus:outline-none text-white bg-red-700 hover:bg-red-900 shadow-neon focus:ring-red-300 hover:scale-105 active:scale-75 transition-all duration-300 font-medium rounded-lg text-sm px-4 py-3 mr-2"
+                className="max-w-sm  text-white bg-red-700 hover:bg-red-900 shadow-neon focus:ring-red-300 hover:scale-110 active:scale-75 transition-all duration-300 font-medium rounded-lg text-sm px-4 py-3 mr-2"
               >
                 <FaTrash className="" />
               </button>

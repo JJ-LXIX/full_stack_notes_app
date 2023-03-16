@@ -73,11 +73,14 @@ function ListTodo() {
             className="h-44 w-[85%] bg-purple-800 border-2 border-purple-400 shadow-lg  shadow-purple-400 rounded-lg mb-10 lg:mb-6 
             flex justify-between lg:w-[90%] xl:w-[85%] xl:h-72 xl:flex-col p-2"
           >
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-white px-2 pt-4 ">
+            <h2
+              className="text-lg md:text-xl lg:text-2xl font-semibold text-white px-2 pt-4 overflow-y-scroll"
+              id="todo_text"
+            >
               {todo.description.slice(0, 1).toUpperCase() +
                 todo.description.slice(1)}
             </h2>
-            <div className="flex  justify-around items-end xl:items-start xl:justify-end ">
+            <div className="flex pt-1 justify-around items-end xl:items-start xl:justify-end ">
               <EditTodo todo={todo} />
               <button
                 onClick={() => deleteTodos(todo.todo_id)}

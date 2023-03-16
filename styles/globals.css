@@ -10,3 +10,14 @@
 body {
   background-color: rgb(24 24 27);
 }
+#todo_text::-webkit-scrollbar {
+  display: none;
+}
+
+#todo_text {
+  -ms-overflow-style: none;
+}
+
+#todo_text {
+  scrollbar-width: none;
+}

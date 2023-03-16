@@ -44,7 +44,7 @@ function EditTodo({ todo }: any) {
             onClick={() => setOpenModal(false)}
           >
             <button
-              className="absolute right-[25%] top-[30%] text-4xl"
+              className="absolute right-[5%] lg:right-[25%] top-[30%] text-4xl md:text-5xl animate-pulse"
               onClick={(e) => {
                 e.stopPropagation;
                 setOpenModal(false);
@@ -55,7 +55,7 @@ function EditTodo({ todo }: any) {
             </button>
           </div>
           <div
-            className="z-10 p-5 bg-zinc-900 h-[20vh] w-[70vw] lg:w-[50vw] xl:w-[40vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-lg shadow-purple-700 rounded-2xl flex justify-around items-center"
+            className="z-10 p-5 bg-zinc-900 h-[20vh] w-[90vw] lg:w-[50vw] xl:w-[40vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-lg shadow-purple-700 rounded-2xl flex justify-around gap-1 md:gap-0 items-center"
             onClick={(e) => {
               e.stopPropagation;
               setOpenModal(true);
@@ -68,7 +68,7 @@ function EditTodo({ todo }: any) {
               onChange={(e) => setDescription(e.target.value)}
             />
             <button
-              className="max-w-sm  text-white bg-purple-700 hover:bg-purple-900  focus:ring-red-300 hover:scale-110 active:scale-75 transition-all duration-300 font-medium rounded-lg text-sm px-8 h-[3rem] mr-2"
+              className="max-w-sm  text-white bg-purple-700 hover:bg-purple-900  focus:ring-red-300 hover:scale-110 active:scale-75 transition-all duration-300 font-medium rounded-lg text-sm px-8 h-[3rem] "
               onClick={(e) => updateDescription(e)}
             >
               Edit

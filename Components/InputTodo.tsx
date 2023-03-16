@@ -47,18 +47,21 @@ function InputTodo() {
 
   return (
     <div className="w-full flex flex-col justify-around items-center  h-[20vh] ">
-      <h1 className="text-3xl font-bold">Full Stack Todo List</h1>
-      <form className="flex gap-5 " onSubmit={formSubmit}>
+      <h1 className="text-xl lg:text-3xl font-bold ">Full Stack Todo List</h1>
+      <form
+        className="flex gap-1 sm:gap-2 lg:gap-4 max-w-[80%] px-2"
+        onSubmit={formSubmit}
+      >
         <input
           type="text"
-          className="bg-zinc-600 px-4 rounded-lg  font-semibold placeholder:text-zinc-300"
+          className="bg-zinc-600 w-[12rem] sm:w-[14rem] md:w-[16rem] lg:w-[18rem] px-2 md:px-4 rounded-lg lg:pr-20 font-semibold placeholder:text-zinc-300"
           value={description}
           placeholder="Enter to-do here!"
           onChange={(e) => {
             setDescription(e.target.value);
           }}
         />
-        <button className="flex justify-center items-center h-5 p-5 border-2 rounded-lg hover:scale-110 active:scale-95 transition-all duration-300">
+        <button className="flex justify-center items-center h-2 p-4 lg:h-5 lg:p-5 border-2 rounded-lg hover:scale-110 active:scale-95 transition-all duration-300">
           Add
         </button>
       </form>

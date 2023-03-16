@@ -27,7 +27,7 @@ function EditTodo({ todo }: any) {
   return (
     <>
       <button
-        className=" text-white bg-green-800 hover:bg-green-700 shadow-neon hover:scale-110 active:scale-75 
+        className=" text-white bg-green-600 hover:bg-green-700 shadow-neon hover:scale-110 active:scale-75 
         transition-all duration-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-3 mr-2"
         onClick={() => {
           setOpenModal(true);
